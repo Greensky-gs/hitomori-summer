@@ -15,7 +15,8 @@ const client = new AmethystClient(
         eventsFolder: './dist/events',
         debug: true,
         prefix: 'h!',
-        strictPrefix: false
+        strictPrefix: false,
+        defaultCooldownTime: 0
     }
 );
 

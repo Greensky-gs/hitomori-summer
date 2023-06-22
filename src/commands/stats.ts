@@ -35,7 +35,10 @@ export default new AmethystCommand({
             },
             {
                 name: 'Status',
-                value: stats.statuses.length === 0 ? 'Aucun statut' : `${stats.statuses.map((x) => statuses[x].name)}`,
+                value:
+                    stats.statuses.length === 0
+                        ? 'Aucun statut'
+                        : `${stats.statuses.map((x) => statuses[x].name).join(', ')}`,
                 inline: false
             }
         )

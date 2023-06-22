@@ -41,17 +41,7 @@ export class Database {
             this.save();
         }
     }
-    private addItem({
-        userId,
-        id,
-        count,
-        save = true
-    }: {
-        userId: string;
-        id: emojiId;
-        count: number;
-        save?: boolean;
-    }) {
+    public addItem({ userId, id, count, save = true }: { userId: string; id: emojiId; count: number; save?: boolean }) {
         const data = this.getUser(userId);
         if (data.items.find((x) => x.id === id)) {
             data.items[data.items.indexOf(data.items.find((x) => x.id === id))].count += count;
@@ -68,7 +58,7 @@ export class Database {
 
         return data;
     }
-    private removeItem({
+    public removeItem({
         userId,
         id,
         count,

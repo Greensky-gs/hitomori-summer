@@ -11,7 +11,7 @@ export const button = ({
     style,
     disabled = false
 }: {
-    label: string;
+    label?: string;
     emoji?: string;
     id?: string;
     url?: string;
@@ -20,10 +20,10 @@ export const button = ({
 }) => {
     const btn = new ButtonBuilder();
 
-    btn.setLabel(label);
     btn.setStyle(ButtonStyle[style]);
     btn.setDisabled(disabled);
 
+    if (label) btn.setLabel(label);
     if (emoji) btn.setEmoji(emoji);
     if (id) btn.setCustomId(id);
     if (url) btn.setURL(url);

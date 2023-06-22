@@ -20,11 +20,6 @@ export default new AmethystCommand({
             .setDescription(`${cmd.options.description}`)
             .setFields(
                 {
-                    name: 'Cooldown',
-                    value: `\`${cmd.options.cooldown ?? message.client.configs?.defaultCooldownTime ?? 5} secondes\``,
-                    inline: true
-                },
-                {
                     name: 'Messages privés',
                     value: cmd.options.preconditions?.find((x) => x.name === 'GuildOnly')
                         ? emoji('dnd')
