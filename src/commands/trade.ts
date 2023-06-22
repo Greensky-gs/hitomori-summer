@@ -5,6 +5,7 @@ import { row } from '../utils/components';
 import { ComponentType, Message, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } from 'discord.js';
 import { emojisData } from '../data/emojis';
 import { emojiId } from '../typings/database';
+import { displayBanner } from '../utils/banner';
 
 export default new AmethystCommand({
     name: 'échanger',
@@ -150,6 +151,7 @@ export default new AmethystCommand({
         }
     });
 
+    const img = displayBanner();
     choose
         .edit({
             embeds: [
@@ -159,8 +161,10 @@ export default new AmethystCommand({
                         `Vous avez échangé ${originalAmount} ${selected.name} contre ${count} ${trade.name}`
                     )
                     .setColor('Orange')
+                    .setImage(img.embed)
             ],
-            components: []
+            components: [],
+            files: [img.file]
         })
         .catch(log4js.trace);
 });

@@ -3,6 +3,7 @@ import { database } from '../utils/db';
 import { classic } from '../utils/embeds';
 import { emojisData } from '../data/emojis';
 import { statuses } from '../data/statuses';
+import { displayBanner } from '../utils/banner';
 
 export default new AmethystCommand({
     name: 'stats',
@@ -11,6 +12,7 @@ export default new AmethystCommand({
 }).setMessageRun(async ({ message }) => {
     const stats = database.getUser(message.author.id);
 
+    const banner = displayBanner();
     const embed = classic(message.author)
         .setTitle('Statistiques')
         .setDescription(`Vos statistiques pour l'évènement d'été :`)
@@ -36,7 +38,8 @@ export default new AmethystCommand({
                 value: stats.statuses.length === 0 ? 'Aucun statut' : `${stats.statuses.map((x) => statuses[x].name)}`,
                 inline: false
             }
-        );
+        )
+        .setImage(banner.embed);
 
-    message.channel.send({ embeds: [embed] }).catch(log4js.trace);
+    message.channel.send({ embeds: [embed], files: [banner.file] }).catch(log4js.trace);
 });
