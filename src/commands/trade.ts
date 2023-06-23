@@ -6,6 +6,7 @@ import { ComponentType, Message, StringSelectMenuBuilder, StringSelectMenuOption
 import { emojisData } from '../data/emojis';
 import { emojiId } from '../typings/database';
 import { displayBanner } from '../utils/banner';
+import { emoji } from '../utils/emoji';
 
 export default new AmethystCommand({
     name: 'échanger',
@@ -21,7 +22,7 @@ export default new AmethystCommand({
             embeds: [
                 classic(message.author)
                     .setTitle('Sélection')
-                    .setDescription(`Quelles médailles voulez-vous échanger ?`)
+                    .setDescription(`${emoji('character')} __Lily Lagoon :__ Quelles médailles voulez-vous échanger ?`)
                     .setColor('Grey')
             ],
             components: [
@@ -34,7 +35,7 @@ export default new AmethystCommand({
                                 const emoji = emojisData[x.id];
 
                                 return {
-                                    label: `${x.count} ${emoji.name.toLowerCase()}`,
+                                    label: `${x.count.toLocaleString('fr')} ${emoji.name.toLowerCase()}`,
                                     emoji: emoji.emoji,
                                     value: x.id
                                 };
@@ -85,7 +86,11 @@ export default new AmethystCommand({
                 classic(message.author)
                     .setTitle('Échange')
                     .setDescription(
-                        `Choisissez ce contre quoi vous voulez échanger **${selectItem.count} ${selected.name}**`
+                        `${emoji(
+                            'character'
+                        )} __Lily Lagoon :__ Choisissez ce contre quoi vous voulez échanger **${selectItem.count.toLocaleString(
+                            'fr'
+                        )} ${selected.name}**`
                     )
                     .setColor('Grey')
             ],
@@ -158,7 +163,9 @@ export default new AmethystCommand({
                 classic(message.author)
                     .setTitle('Échange')
                     .setDescription(
-                        `Vous avez échangé ${originalAmount} ${selected.name} contre ${count} ${trade.name}`
+                        `${emoji('character')} __Lily Lagoon :__ Vous avez échangé ${originalAmount.toLocaleString(
+                            'fr'
+                        )} ${selected.name} contre ${count.toLocaleString('fr')} ${trade.name}`
                     )
                     .setColor('Orange')
                     .setImage(img.embed)

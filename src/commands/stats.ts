@@ -30,7 +30,9 @@ export default new AmethystCommand({
                 value:
                     stats.items.length === 0
                         ? 'Aucune médaille'
-                        : `${stats.items.map((x) => `${emojisData[x.id].emoji} (**x${x.count}**)`).join('\n')}`,
+                        : `${stats.items
+                              .map((x) => `${emojisData[x.id].emoji} (**x${x.count.toLocaleString('fr')}**)`)
+                              .join('\n')}`,
                 inline: true
             },
             {
