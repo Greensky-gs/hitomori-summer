@@ -14,7 +14,7 @@ export const statuses = {
         emoji: 'bouquet'
     },
     yinBrother: {
-        name: 'Frêre du Yin',
+        name: 'Frère du Yin',
         id: 'yinBrother',
         value: 20,
         auto: false,
